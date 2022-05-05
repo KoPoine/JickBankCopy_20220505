@@ -17,7 +17,7 @@ class RoomAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
         if (tempRow == null) {
-            tempRow = LayoutInflater.from(mContext).inflate(R.layout.room_list_item, null)
+            tempRow = LayoutInflater.from(mContext).inflate(resId, null)
         }
         val row = tempRow!!
         return row
