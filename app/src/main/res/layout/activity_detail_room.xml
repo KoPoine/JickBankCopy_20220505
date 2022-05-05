@@ -7,4 +7,45 @@
     android:orientation="vertical"
     tools:context=".DetailRoomActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/priceTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가격"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/addressTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="주소, 층"
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/descriptionTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="설명"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
 </LinearLayout>
