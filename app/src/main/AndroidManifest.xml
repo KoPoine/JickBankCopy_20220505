@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JickBankCopy_20220505">
         <activity
+            android:name=".DetailRoomActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
