@@ -14,28 +14,8 @@ class DetailRoomActivity : AppCompatActivity() {
 
         val roomData = intent.getSerializableExtra("roomData") as RoomData
 
-        val formatter = DecimalFormat("#,###")
-
-        val resultPrice = if (roomData.price < 10000) {
-            formatter.format(roomData.price)
-        } else {
-            val over = roomData.price / 10000
-            val remain = roomData.price % 10000
-            "${over}억${formatter.format(remain)}"
-        }
-
-        val resultLevel =
-            when {
-                roomData.level > 0 -> { "${roomData.level}층" }
-                roomData.level < 0 -> {
-                    val level = roomData.level * -1
-                    "지하${level}층"
-                }
-                else -> {"반지하"}
-            }
-
-        priceTxt.text = resultPrice
-        addressTxt.text = "${roomData.address}, $resultLevel"
+        priceTxt.text = roomData.getFormattedPrice()
+        addressTxt.text = "${roomData.address}, ${roomData.getFormattedLevel()}"
         descriptionTxt.text = roomData.description
     }
 }

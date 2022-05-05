@@ -30,29 +30,9 @@ class RoomAdapter(
 
         val data = mList[position]
 
-        val formatter = DecimalFormat("#,###")
-
-        val resultPrice = if (data.price < 10000) {
-            formatter.format(data.price)
-        } else {
-            val over = data.price / 10000
-            val remain = data.price % 10000
-            "${over}억${formatter.format(remain)}"
-        }
-
-        val resultLevel =
-            when {
-                data.level > 0 -> { "${data.level}층" }
-                data.level < 0 -> {
-                    val level = data.level * -1
-                    "지하${level}층"
-                }
-                else -> {"반지하"}
-            }
-
-        priceTxt.text = resultPrice
+        priceTxt.text = data.getFormattedPrice()
         addressTxt.text = "${data.address}, "
-        levelTxt.text = resultLevel
+        levelTxt.text = data.getFormattedLevel()
         descriptionTxt.text = data.description
 
         return row
