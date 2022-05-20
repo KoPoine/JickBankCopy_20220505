@@ -9,7 +9,6 @@ class RoomData (
     val level : Int,
     val description : String,
         ) : Serializable {
-
     fun getFormattedPrice() : String {
         val formatter = DecimalFormat("#,###")
 
@@ -19,6 +18,7 @@ class RoomData (
             val over = this.price / 10000
             val remain = this.price % 10000
             "${over}억${formatter.format(remain)}"
+            "${over} + 억 + "
         }
         return resultPrice
     }

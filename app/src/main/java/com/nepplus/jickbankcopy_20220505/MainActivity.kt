@@ -3,6 +3,7 @@ package com.nepplus.jickbankcopy_20220505
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.nepplus.jickbankcopy_20220505.adapters.RoomAdapter
 import com.nepplus.jickbankcopy_20220505.models.RoomData
 import kotlinx.android.synthetic.main.activity_main.*
