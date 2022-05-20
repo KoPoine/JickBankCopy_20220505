@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/addDataBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="데이터 추가 하기"/>
+
     <ListView
         android:id="@+id/roomListView"
         android:layout_width="match_parent"

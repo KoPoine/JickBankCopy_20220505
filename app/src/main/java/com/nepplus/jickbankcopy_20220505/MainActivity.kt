@@ -1,9 +1,13 @@
 package com.nepplus.jickbankcopy_20220505
 
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.nepplus.jickbankcopy_20220505.adapters.RoomAdapter
 import com.nepplus.jickbankcopy_20220505.models.RoomData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,10 +34,42 @@ class MainActivity : AppCompatActivity() {
         mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, mRoomList)
         roomListView.adapter = mRoomAdapter
 
+        addDataBtn.setOnClickListener {
+            mRoomList.add(0, mRoomList[0])
+            mRoomAdapter.notifyDataSetChanged()
+        }
+
         roomListView.setOnItemClickListener { adapterView, view, i, l ->
             val myIntent = Intent(this, DetailRoomActivity::class.java)
             myIntent.putExtra("roomData", mRoomList[i])
             startActivity(myIntent)
+        }
+
+        roomListView.setOnItemLongClickListener { adapterView, view, index, l ->
+            val alert = AlertDialog.Builder(this)
+                .create()
+
+            val customView = layoutInflater.inflate(R.layout.custom_alert, null)
+            alert.setView(customView)
+
+            val titleTxt = customView.findViewById<TextView>(R.id.titleTxt)
+            val messageTxt = customView.findViewById<TextView>(R.id.messageTxt)
+            val okBtn = customView.findViewById<Button>(R.id.positiveBtn)
+            val cancelBtn = customView.findViewById<Button>(R.id.negativeBtn)
+
+            titleTxt.text = "항목 삭제"
+            messageTxt.text = "${mRoomList[index].price}을 삭제하시겠습니까?"
+            okBtn.setOnClickListener {
+                mRoomList.removeAt(index)
+                mRoomAdapter.notifyDataSetChanged()
+                alert.dismiss()
+            }
+            cancelBtn.setOnClickListener {
+                alert.dismiss()
+            }
+            alert.show()
+
+            return@setOnItemLongClickListener true
         }
     }
 }
